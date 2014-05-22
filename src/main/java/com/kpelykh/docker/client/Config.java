@@ -30,8 +30,8 @@ class Config {
         }
 
         final File file = new File(System.getProperty("user.name"), ".docker.io.properties");
-        System.out.println(file);
-        if (file.isFile()) {
+
+	    if (file.isFile()) {
             try {
                 final FileInputStream in = new FileInputStream(file);
                 try {

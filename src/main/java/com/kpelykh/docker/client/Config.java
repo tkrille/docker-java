@@ -22,14 +22,7 @@ class Config {
             throw new DockerException(e);
         }
 
-        for (String s : new String[]{"url", "version", "username", "password", "email"}) {
-            final String key = "docker.io." + s;
-            if (System.getProperties().keySet().contains(key)) {
-                p.setProperty(key, System.getProperty(key));
-            }
-        }
-
-        final File file = new File(System.getProperty("user.name"), ".docker.io.properties");
+        final File file = new File(System.getProperty("user.home"), ".docker.io.properties");
 
 	    if (file.isFile()) {
             try {
@@ -43,6 +36,13 @@ class Config {
                 throw new DockerException(e);
             }
         }
+
+	    for (String s : new String[]{"url", "version", "username", "password", "email"}) {
+		    final String key = "docker.io." + s;
+		    if (System.getProperties().keySet().contains(key)) {
+			    p.setProperty(key, System.getProperty(key));
+		    }
+	    }
 
         final Config c = new Config();
 

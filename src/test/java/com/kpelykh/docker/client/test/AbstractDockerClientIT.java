@@ -13,10 +13,10 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractDockerClientTest extends Assert {
+public abstract class AbstractDockerClientIT extends Assert {
 	
 	public static final Logger LOG = LoggerFactory
-			.getLogger(AbstractDockerClientTest.class);
+			.getLogger(AbstractDockerClientIT.class);
 	
 	protected DockerClient dockerClient;
 

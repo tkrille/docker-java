@@ -10,7 +10,6 @@ import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.isEmptyString;
-import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.Matchers.lessThanOrEqualTo;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.notNullValue;
@@ -59,9 +58,9 @@ import com.sun.jersey.api.client.ClientResponse;
  * 
  * @author Konstantin Pelykh (kpelykh@gmail.com)
  */
-public class DockerClientTest extends AbstractDockerClientTest {
+public class DockerClientIT extends AbstractDockerClientIT {
 	public static final Logger LOG = LoggerFactory
-			.getLogger(DockerClientTest.class);
+			.getLogger(DockerClientIT.class);
 
 	@BeforeTest
 	public void beforeTest() throws DockerException {

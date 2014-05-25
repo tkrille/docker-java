@@ -11,7 +11,7 @@ import java.lang.reflect.Method;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class DockerClientAuthTest extends AbstractDockerClientTest {
+public class DockerClientAuthIT extends AbstractDockerClientIT {
 
 	@BeforeTest
 	public void beforeTest() throws DockerException  {

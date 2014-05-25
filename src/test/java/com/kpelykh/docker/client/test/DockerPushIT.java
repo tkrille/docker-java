@@ -17,10 +17,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 // delete here : https://index.docker.io/u/alexec/busybox/delete/
-public class DockerPushTest extends AbstractDockerClientTest {
+public class DockerPushIT extends AbstractDockerClientIT {
 	
 	public static final Logger LOG = LoggerFactory
-			.getLogger(DockerPushTest.class);
+			.getLogger(DockerPushIT.class);
 
     String username;
 

@@ -64,9 +64,19 @@ public class DockerClient {
         this(configWithServerUrl(serverUrl));
     }
 
-    private static Config configWithServerUrl(String serverUrl) throws DockerException {
-        final Config c = Config.createConfig();
-        c.url = URI.create(serverUrl);
+	public DockerClient(String serverUrl, String version) throws DockerException {
+		this(configWithServerUrlAndVersion(serverUrl, version));
+	}
+
+	private static Config configWithServerUrl(String serverUrl) throws DockerException {
+		final Config c = Config.createConfig();
+		c.url = URI.create(serverUrl);
+		return c;
+	}
+
+	private static Config configWithServerUrlAndVersion(String serverUrl, String version) throws DockerException {
+        final Config c = configWithServerUrl(serverUrl);
+		c.version = version;
         return c;
     }
 

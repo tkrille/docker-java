@@ -185,7 +185,7 @@ public class DockerClientIT extends AbstractDockerClientIT {
 
 		ContainerConfig containerConfig = new ContainerConfig();
 		containerConfig.setImage("busybox");
-		containerConfig.setCmd(new String[] { "true" });
+		containerConfig.setCmd(new String[] { "sleep", "3s" });
 
 		ContainerCreateResponse container = dockerClient
 				.createContainer(containerConfig);

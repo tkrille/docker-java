@@ -14,7 +14,6 @@ import com.sun.jersey.api.client.filter.LoggingFilter;
 import com.sun.jersey.client.apache4.ApacheHttpClient4;
 import com.sun.jersey.client.apache4.ApacheHttpClient4Handler;
 import com.sun.jersey.core.util.MultivaluedMapImpl;
-
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
@@ -32,16 +31,13 @@ import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 import static org.apache.commons.io.IOUtils.closeQuietly;
 
@@ -833,8 +829,13 @@ public class DockerClient {
     }
 
 	public ClientResponse build(File dockerFolder, String tag, boolean noCache) throws DockerException {
+		return build(dockerFolder, tag, noCache ? EnumSet.of(BuildFlag.NO_CACHE) : EnumSet.noneOf(BuildFlag.class));
+	}
+
+	public ClientResponse build(File dockerFolder, String tag, Set <BuildFlag> flags) throws DockerException {
 		Preconditions.checkNotNull(dockerFolder, "Folder is null");
 		Preconditions.checkArgument(dockerFolder.exists(), "Folder %s doesn't exist", dockerFolder);
+		Preconditions.checkNotNull(flags, "flags is null");
 		Preconditions.checkState(new File(dockerFolder, "Dockerfile").exists(), "Dockerfile doesn't exist in " + dockerFolder);
 
 		//We need to use Jersey HttpClient here, since ApacheHttpClient4 will not add boundary filed to
@@ -842,8 +843,17 @@ public class DockerClient {
 
 		MultivaluedMap<String, String> params = new MultivaluedMapImpl();
 		params.add("t", tag);
-		if (noCache) {
-			params.add("nocache", "true");
+		for (BuildFlag flag : flags) {
+			switch (flag) {
+				case NO_CACHE:
+					params.add("nocache", "true");
+					break;
+				case REMOVE_INTERMEDIATE_IMAGES:
+					params.add("rm", "true");
+					break;
+				default:
+					throw new IllegalArgumentException("unexpected flag " + flag);
+			}
 		}
 
 		// ARCHIVE TAR

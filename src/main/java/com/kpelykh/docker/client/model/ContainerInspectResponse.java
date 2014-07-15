@@ -70,6 +70,9 @@ public class ContainerInspectResponse {
     
     @JsonProperty("MountLabel")
     private String mountLabel;
+
+	@JsonProperty("Paused")
+	public boolean paused;
     
     public String getId() {
         return id;
@@ -223,7 +226,15 @@ public class ContainerInspectResponse {
 		this.mountLabel = mountLabel;
 	}
 
-    public class NetworkSettings {
+	public boolean isPaused() {
+		return paused;
+	}
+
+	public void setPaused(boolean paused) {
+		this.paused = paused;
+	}
+
+	public class NetworkSettings {
 
         @JsonProperty("IPAddress") public String ipAddress;
         @JsonProperty("IPPrefixLen") public int ipPrefixLen;

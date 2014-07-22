@@ -10,7 +10,6 @@ import com.sun.jersey.api.client.*;
 import com.sun.jersey.api.client.WebResource.Builder;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
-import com.sun.jersey.api.client.filter.LoggingFilter;
 import com.sun.jersey.client.apache4.ApacheHttpClient4;
 import com.sun.jersey.client.apache4.ApacheHttpClient4Handler;
 import com.sun.jersey.core.util.MultivaluedMapImpl;
@@ -99,7 +98,6 @@ public class DockerClient {
 		//client = new UnixSocketClient(clientConfig);
 
 		client.addFilter(new JsonClientFilter());
-		client.addFilter(new LoggingFilter());
 	}
 
 	public void setCredentials(String username, String password, String email) {

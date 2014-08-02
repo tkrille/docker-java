@@ -180,7 +180,7 @@ public class DockerClientIT extends AbstractDockerClientIT {
 		tmpContainers.add(container.getId());
 	}
 
-	@Test
+	@Test(groups = "quarantine")
 	public void testStartContainer() throws DockerException {
 
 		ContainerConfig containerConfig = new ContainerConfig();

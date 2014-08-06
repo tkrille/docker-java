@@ -145,3 +145,7 @@ In the class path at `/docker.io.properties`, e.g.:
 
     docker.io.url=http://localhost:4243
     docker.io.version=1.11
+
+Contributors
+---
+* jacobbay

@@ -29,7 +29,7 @@ import static org.testinfected.hamcrest.jpa.HasFieldWithValue.hasField;
 
 /**
  * Unit test for DockerClient.
- * 
+ *
  * @author Konstantin Pelykh (kpelykh@gmail.com)
  */
 public class DockerClientIT extends AbstractDockerClientIT {
@@ -139,7 +139,7 @@ public class DockerClientIT extends AbstractDockerClientIT {
 		assertThat(container1.getId(), not(isEmptyString()));
 		dockerClient.startContainer(container1.getId());
 		tmpContainers.add(container1.getId());
-		
+
 		LOG.info("container id: " + container1.getId());
 
 		List containers2 = dockerClient.listContainers(true);
@@ -154,7 +154,7 @@ public class DockerClientIT extends AbstractDockerClientIT {
 		for(Container container: filteredContainers) {
 			LOG.info("container: " + container);
 		}
-		
+
 		Container container2 = filteredContainers.get(0);
 		assertThat(container2.getCommand(), not(isEmptyString()));
 		assertThat(container2.getImage(), Matchers.startsWith("busybox:"));
@@ -525,7 +525,7 @@ public class DockerClientIT extends AbstractDockerClientIT {
 	}
 
 	/*
-	 * 
+	 *
 	 * ################ ## MISC TESTS ## ################
 	 */
 
@@ -597,7 +597,7 @@ public class DockerClientIT extends AbstractDockerClientIT {
 	public void testDockerBuilderAddUrl() throws DockerException, IOException {
 		File baseDir = new File(Thread.currentThread().getContextClassLoader()
 				.getResource("testAddUrl").getFile());
-		dockerfileBuild(baseDir, "docker.io");
+		dockerfileBuild(baseDir, "docker.com");
 	}
 
     @Test
@@ -682,7 +682,7 @@ public class DockerClientIT extends AbstractDockerClientIT {
 
 	/**
 	 * Checks to see if a specific port is available.
-	 * 
+	 *
 	 * @param port
 	 *            the port to check for availability
 	 */

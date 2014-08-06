@@ -67,13 +67,13 @@ public class ContainerInspectResponse {
 
     @JsonProperty("ExecDriver")
     private String execDriver;
-    
+
     @JsonProperty("MountLabel")
     private String mountLabel;
 
 	@JsonProperty("Paused")
 	public boolean paused;
-    
+
     public String getId() {
         return id;
     }
@@ -209,19 +209,19 @@ public class ContainerInspectResponse {
     public void setHostConfig(HostConfig hostConfig) {
         this.hostConfig = hostConfig;
     }
-    
+
     public void setExecDriver(String execDriver) {
 		this.execDriver = execDriver;
 	}
-    
+
     public String getExecDriver() {
 		return execDriver;
 	}
-    
+
     public String getMountLabel() {
 		return mountLabel;
 	}
-    
+
     public void setMountLabel(String mountLabel) {
 		this.mountLabel = mountLabel;
 	}
@@ -259,6 +259,7 @@ public class ContainerInspectResponse {
     public class ContainerState {
 
         @JsonProperty("Running") public boolean running;
+        @JsonProperty("Paused") public boolean paused;
         @JsonProperty("Pid") public int pid;
         @JsonProperty("ExitCode") public int exitCode;
         @JsonProperty("StartedAt") public String startedAt;
@@ -269,6 +270,7 @@ public class ContainerInspectResponse {
         public String toString() {
             return "ContainerState{" +
                     "running=" + running +
+                    ", paused=" + paused +
                     ", pid=" + pid +
                     ", exitCode=" + exitCode +
                     ", startedAt='" + startedAt + '\'' +

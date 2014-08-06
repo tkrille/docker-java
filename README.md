@@ -18,6 +18,8 @@ Maven may run tests during build process but tests are disabled by default. The 
 
     $ mvn clean install -DskipTests=false -Ddocker.io.username=... -Ddocker.io.password=... -Ddocker.io.email=...
 
+Make sure you have a public repository named "busybox".
+
 By default Docker server is using UNIX sockets for communication with the Docker client, however docker-java
 client uses TCP/IP to connect to the Docker server, so you will need to make sure that your Docker server is
 listening on TCP port. To allow Docker server to use TCP add the following line to /etc/default/docker

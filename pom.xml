@@ -11,7 +11,7 @@
     <groupId>com.alexecollins</groupId>
     <artifactId>docker-java</artifactId>
     <packaging>jar</packaging>
-    <version>0.8.15-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <name>docker-java</name>
     <url>https://github.com/kpelykh/docker-java</url>
